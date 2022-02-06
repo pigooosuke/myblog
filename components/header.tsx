@@ -2,7 +2,7 @@ import styles from '../styles/header.module.css'
 
 const Header = () => {
     return (
-        <nav className={styles.headerNav}>
+        <div className={styles.header}>
             <div className={styles.logo}>
                 <span>Pigooosuke</span>
             </div>
@@ -27,6 +27,7 @@ const Header = () => {
                     </a>
                 </div>
             </div>
-        </nav >)
+        </div >
+    )
 }
 export default Header

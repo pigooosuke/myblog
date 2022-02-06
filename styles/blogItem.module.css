@@ -1,0 +1,6 @@
+.blogItem {@apply max-w-sm w-full lg:max-w-full lg:flex}
+.blogItemImage {@apply h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden}
+.blogItemMain {@apply  p-4 flex flex-col justify-between leading-normal}
+.blogItemContents {@apply mb-8}
+.blogItemTitle {@apply text-gray-900 font-bold text-xl mb-2}
+.blogItemOutline {@apply text-gray-700 text-base}

@@ -1,11 +1,11 @@
-.headerNav {@apply flex items-center justify-between flex-wrap bg-teal-500 p-6}
-.logo {@apply flex items-center flex-shrink-0 text-white mr-6}
-.logo > span {@apply font-semibold text-xl tracking-tight}
+.header {@apply flex items-center justify-between flex-wrap p-6}
+.logo {@apply flex items-center flex-shrink-0 text-black mr-auto lg:pb-12 lg:pt-12 lg:pl-12}
+.logo > span {@apply font-semibold text-3xl tracking-widest}
 .menuButton {@apply block lg:hidden}
-.menuButton > button {@apply flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white}
+.menuButton > button {@apply flex items-center px-3 py-2 border rounded text-black border-black }
 .menuButton > button > svg {@apply fill-current h-3 w-3}
 
-.menuList {@apply w-full block flex-grow lg:flex lg:items-center lg:w-auto}
+.menuList {@apply hidden w-48 ml-auto mr-0 lg:flex lg:items-center lg:pr-12 hover:text-gray-400}
 .menuList > div {@apply text-sm lg:flex-grow}
-.menuList > div > a {@apply block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white}
+.menuList > div > a {@apply block mt-4 lg:inline-block lg:mt-0 hover:text-black}
 .menuList > div > a:not(:last-child) {@apply mr-4}
