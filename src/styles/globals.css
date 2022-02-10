@@ -1,0 +1,5 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {@apply hover:text-gray-400 hover:cursor-pointer}

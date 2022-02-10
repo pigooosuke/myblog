@@ -1,0 +1,11 @@
+.noteItem {@apply w-full lg:max-w-full lg:flex}
+.noteItemMain {@apply  p-4 flex flex-col justify-between leading-normal}
+.noteItemTitle {@apply text-gray-900 font-bold text-xl mb-2}
+.noteItemTags {@apply items-center mt-2}
+.noteItemTags > ul {@apply flex}
+.noteItemTags > ul > li {@apply p-0 pr-2 last:pr-0 text-sm text-gray-500 underline}
+
+
+.noteItemContents {@apply mb-4}
+.noteItemDate {@apply text-gray-400 font-bold text-base mb-2}
+.noteItemDescription {@apply border-l-4 pl-4 text-gray-700 text-sm}

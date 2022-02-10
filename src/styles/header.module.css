@@ -1,0 +1,23 @@
+.header {@apply flex items-center justify-between flex-wrap p-6}
+
+.logo {@apply flex items-center flex-shrink-0 text-black mr-auto lg:pb-12 lg:pt-12 lg:pl-12 }
+.logo > span {@apply font-semibold text-3xl tracking-widest}
+
+.menuButtonOpen {@apply block lg:hidden}
+.menuButtonOpen > button {@apply flex items-center}
+.menuButtonOpen > button > svg {@apply fill-current}
+.menuButtonhide {@apply hidden}
+
+.menuList {@apply hidden w-48 ml-auto mr-0 lg:flex lg:items-center lg:pr-12}
+.menuList > div {@apply text-sm lg:flex-grow}
+.menuList > div > a {@apply block mt-4 lg:inline-block lg:mt-0 hover:text-black}
+.menuList > div > a:not(:last-child) {@apply mr-4}
+
+.sideMenu {@apply flex fixed overflow-hidden top-0 right-0 left-0 h-screen z-10 bg-white justify-between flex-wrap p-6}
+.sideMenuClosed {@apply hidden}
+
+.sideMenuList {@apply flex w-48 p-4 ml-2 pt-6}
+.sideMenuList > ul > li {@apply p-2 text-base}
+
+.menuButtonClose {@apply block}
+.menuButtonClose > button {@apply flex items-center px-3 py-2 rounded text-black }
