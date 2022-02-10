@@ -13,7 +13,7 @@ const Paragraph = ({ block }: { block: BlockRecord }) => {
     let text_blocks = block[block.type].text.map((text_block: RichTextBlock, i: number) => {
         return buildText(text_block)
     })
-    return (<p>{text_blocks}</p>)
+    return (<p key={`p-${block.id}`}>{text_blocks}</p>)
 }
 
 export default Paragraph

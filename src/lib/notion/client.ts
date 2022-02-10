@@ -17,7 +17,7 @@ const notion = new Client({
 export async function queryDatabase(pageSize: number = 10) {
     if (blogIndexCache.exists()) {
         const allNotes = await getAllNotes()
-        return allNotes.slice(0, pageSize).map(_buildNote)
+        return allNotes.slice(0, pageSize)
     }
     let params = {
         database_id: process.env.DATABASE_ID || "0",
@@ -37,8 +37,7 @@ export async function queryDatabase(pageSize: number = 10) {
 export async function getNote(note_id: string) {
     if (blogIndexCache.exists()) {
         const allNotes = await getAllNotes()
-        let targetNote = allNotes.find(note => note.id === note_id)
-        return _buildNote(targetNote)
+        return allNotes.find(note => note.page_id === note_id)
     }
     const resp = await notion.pages.retrieve({ page_id: note_id });
     return _buildNote(resp)
@@ -136,7 +135,7 @@ export async function getAllNotes() {
         }
     }
 
-    return results.filter((note: QueryDatabaseResponseRecord) => _buildNote(note))
+    return results.map((note: QueryDatabaseResponseRecord) => _buildNote(note))
 }
 
 function _buildNote(note: QueryDatabaseResponseRecord) {
@@ -144,7 +143,7 @@ function _buildNote(note: QueryDatabaseResponseRecord) {
 
     const post: Note = {
         page_id: note.id,
-        title: prop.タイトル.title[0].plain_text,
+        title: prop["タイトル"].title[0].plain_text,
         tags: prop.tags.multi_select.map((obj: NoteMetaTags) => obj.name),
         paper_url: prop.paper_url.rich_text[0]?.plain_text || null,
         description: prop.description.rich_text[0]?.plain_text || null,
