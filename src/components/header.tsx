@@ -2,12 +2,6 @@ import Link from 'next/link'
 import styles from '@/styles/header.module.css'
 import { useState } from 'react'
 
-const openMenu = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    })
-}
 
 const Header = () => {
     const [sideMenuOpen, setsideMenuOpen] = useState<boolean>(false);
@@ -50,7 +44,7 @@ const Header = () => {
                 <div className={styles.menuList}>
                     <div>
                         <Link href="/" passHref>
-                            <a>Note</a>
+                            <a>Blog</a>
                         </Link>
                         <Link href="/about" passHref>
                             <a>About</a>
@@ -63,7 +57,7 @@ const Header = () => {
                     <ul>
                         <li>
                             <Link href="/">
-                                <a>Note</a>
+                                <a>Blog</a>
                             </Link></li>
                         <li>
                             <Link href="/about">

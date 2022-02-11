@@ -1,5 +1,5 @@
 import React from 'react';
-import { BlockRecord } from '@/types/note';
+import { BaseBlock } from '@/types/blog';
 import Paragraph from '@/components/blocks/paragraph'
 import Heading from '@/components/blocks/heading'
 import ImageBlock from '@/components/blocks/image'
@@ -9,7 +9,7 @@ import BulletedList from '@/components/blocks/bulleted_list'
 import NumberedList from '@/components/blocks/numbered_list'
 
 
-const NotionBlock = ({ block }: { block: BlockRecord }) => {
+const NotionBlock = ({ block }: { block: BaseBlock }) => {
     if (block.type === 'paragraph') {
         return <Paragraph block={block} key={`paragraph-${block.id}-${block.index}`} />
     } else if (block.type === 'heading_1') {

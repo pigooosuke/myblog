@@ -1,16 +1,16 @@
 import React from 'react';
 import {
-    BlockRecord,
+    BaseBlock,
     RichTextBlock
-} from '@/types/note';
+} from '@/types/blog';
 import 'katex/dist/katex.min.css'
 import { buildText } from "@/components/blocks/block_utils"
 
 
-const NumberedList = ({ block }: { block: BlockRecord }) => {
+const NumberedList = ({ block }: { block: BaseBlock }) => {
     return (
         <ul key={`numbered-list-item-ul-${block.id}`}>
-            {block.list_items.map((list_item: BlockRecord, i: number) => {
+            {block.list_items.map((list_item: BaseBlock, i: number) => {
                 let text_blocks = list_item[list_item.type].text.map((text_block: RichTextBlock, i: number) => {
                     return buildText(text_block)
                 })

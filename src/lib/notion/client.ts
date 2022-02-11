@@ -1,13 +1,11 @@
 import {
-    Note,
+    Post,
     QueryDatabaseResponseRecord,
-    BlockRecord,
-    NoteMetaTags,
-} from '@/types/note';
-import { ListBlockChildrenParameters, QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints'
+    BaseBlock,
+    PostMetaTags,
+} from '@/types/blog';
 import { parseISO } from 'date-fns';
 import { format } from 'date-fns-tz';
-const blogIndexCache = require('./blog-index-cache.js')
 const { Client } = require("@notionhq/client");
 
 const notion = new Client({
@@ -15,12 +13,9 @@ const notion = new Client({
 })
 
 export async function queryDatabase(pageSize: number = 10) {
-    if (blogIndexCache.exists()) {
-        const allNotes = await getAllNotes()
-        return allNotes.slice(0, pageSize)
-    }
+    // get Posts order by created desc
     let params = {
-        database_id: process.env.DATABASE_ID || "0",
+        database_id: process.env.DATABASE_ID,
         sorts: [
             {
                 property: 'created',
@@ -29,48 +24,54 @@ export async function queryDatabase(pageSize: number = 10) {
         ],
         page_size: pageSize,
     };
-    const resp = await notion.databases.query(params);
-    return resp.results.map((note: QueryDatabaseResponseRecord) => _buildNote(note))
+    return await notion.databases.query(params);
 }
 
 
-export async function getNote(note_id: string) {
-    if (blogIndexCache.exists()) {
-        const allNotes = await getAllNotes()
-        return allNotes.find(note => note.page_id === note_id)
-    }
-    const resp = await notion.pages.retrieve({ page_id: note_id });
-    return _buildNote(resp)
+export async function getPost(page_id: string) {
+    // get single post
+    return await notion.pages.retrieve({ page_id: page_id });
 }
 
 
-export async function getBlocks(page_id: string) {
-    let results: BlockRecord[] = []
-    let params: ListBlockChildrenParameters = {
-        block_id: page_id,
+export async function getPostContent(id: string) {
+    // get post blocks
+    let results: BaseBlock[] = []
+    let params = {
+        block_id: id,
         page_size: 100,
     }
-    while (true) {
-        const resp = await notion.blocks.children.list(params);
-        // too slow: improvement is required
-        for (const block of resp.results) {
+    let postContent = await notion.blocks.children.list(params);
+    // get children blocks: inefficient loop
+    for (const block of postContent.results) {
+        if (block.has_children === true) {
+            let list_items = await getPostContent(block.id)
+            results.push({ list_items: list_items, ...block })
+        } else {
+            results.push({ ...block })
+        }
+    }
+    while (postContent.has_more) {
+        postContent = await notion.blocks.children.list({
+            ...params,
+            start_cursor: postContent.next_cursor,
+        })
+        // get children blocks: inefficient loop
+        for (const block of postContent.results) {
             if (block.has_children === true) {
-                block.list_items = await getBlocks(block.id)
+                let list_items = await getPostContent(block.id)
+                results.push({ list_items: list_items, ...block })
+            } else {
+                results.push({ ...block })
             }
-            results.push(block)
         }
-
-        if (!resp.has_more) {
-            break
-        }
-        params['start_cursor'] = resp.next_cursor
     }
     return results
 }
 
 
 
-export const collectList = (blocks: BlockRecord[]) =>
+export const collectList = (blocks: BaseBlock[]) =>
     blocks.reduce((arr, block, i) => {
         const isBulletedListItem = block.type === 'bulleted_list_item'
         const isNumberedListItem = block.type === 'numbered_list_item'
@@ -105,46 +106,39 @@ export const collectList = (blocks: BlockRecord[]) =>
     )
 
 
-
-export async function getAllNotes() {
-    let results: QueryDatabaseResponseRecord[] = []
-    if (blogIndexCache.exists()) {
-        results = blogIndexCache.get()
-        console.log('Found cached posts.')
-    } else {
-        let params: QueryDatabaseParameters = {
-            database_id: process.env.DATABASE_ID || "0",
-            sorts: [
-                {
-                    property: 'created',
-                    direction: 'descending',
-                },
-            ],
-            page_size: 100,
-        };
-
-        while (true) {
-            const resp = await notion.databases.query(params);
-            results = results.concat(resp.results)
-
-            if (!resp.has_more) {
-                break
-            }
-
-            params['start_cursor'] = resp.next_cursor
-        }
+export async function getPosts() {
+    // get all posts
+    let results = []
+    let params = {
+        database_id: process.env.DATABASE_ID,
+        sorts: [
+            {
+                property: 'created',
+                direction: 'descending',
+            },
+        ],
+        page_size: 100,
+    };
+    let postContents = await notion.databases.query(params);
+    results = [...postContents.results]
+    while (postContents.has_more) {
+        postContents = await notion.blocks.children.list({
+            ...params,
+            start_cursor: postContents.next_cursor,
+        })
+        results = [...results, ...postContents.results]
     }
-
-    return results.map((note: QueryDatabaseResponseRecord) => _buildNote(note))
+    return results
 }
 
-function _buildNote(note: QueryDatabaseResponseRecord) {
-    const prop = note.properties
+export function buildPost(block: QueryDatabaseResponseRecord) {
+    const prop = block.properties
 
-    const post: Note = {
-        page_id: note.id,
+    const post: Post = {
+        page_id: block.id,
+        slug: prop.slug.rich_text[0]?.plain_text,
         title: prop["タイトル"].title[0].plain_text,
-        tags: prop.tags.multi_select.map((obj: NoteMetaTags) => obj.name),
+        tags: prop.tags.multi_select.map((obj: PostMetaTags) => obj.name),
         paper_url: prop.paper_url.rich_text[0]?.plain_text || null,
         description: prop.description.rich_text[0]?.plain_text || null,
         created: _to_date(prop.created.created_time),

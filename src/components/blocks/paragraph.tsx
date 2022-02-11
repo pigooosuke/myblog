@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-    BlockRecord,
+    BaseBlock,
     RichTextBlock
-} from '@/types/note';
+} from '@/types/blog';
 import { buildText } from "@/components/blocks/block_utils"
 
 
-const Paragraph = ({ block }: { block: BlockRecord }) => {
+const Paragraph = ({ block }: { block: BaseBlock }) => {
     if (!block) {
         return null
     }

@@ -1,19 +1,19 @@
-import { NoteList } from '@/components/notes'
-import { queryDatabase } from '@/lib/notion/client'
+import { BlogList } from '@/components/blog_list'
+import { getPosts } from '@/lib/notion/client'
 
 export async function getStaticProps() {
-  const notes = await queryDatabase()
+  const posts = await getPosts()
   return {
     props: {
-      notes
+      posts
     }
   }
 }
 
-const Home = ({ notes = [] }) => {
+const Home = ({ posts = [] }) => {
   return (
     <>
-      <NoteList notes={notes} />
+      <BlogList posts={posts} />
     </>
   )
 }

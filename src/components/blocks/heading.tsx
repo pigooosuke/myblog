@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-    BlockRecord,
+    BaseBlock,
     RichTextBlock,
-} from '@/types/note';
+} from '@/types/blog';
 import { buildText } from "@/components/blocks/block_utils"
 
 
-const Heading = ({ block, level }: { block: BlockRecord, level: number }) => {
+const Heading = ({ block, level }: { block: BaseBlock, level: number }) => {
     if (!block) {
         return null
     }

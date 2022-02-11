@@ -38,7 +38,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/lib/notion/blog-index-cache.js",
+    "scripts/blog-index-cache.js",
     "scripts/set-blog-index-cache.js",
     "scripts/expire-blog-index-cache.js"
   ],

@@ -1,13 +1,10 @@
-import NotionBlock from '@/components/notion-blocks'
-import { BlockRecord } from '@/types/note';
+import NotionBlock from '@/components/notion_blocks'
+import { BaseBlock, ListBlockChildrenResponseResults } from '@/types/blog';
+import { collectList } from '@/lib/notion/client'
 
-
-const Article = ({ blocks }: { blocks: BlockRecord[] }) => {
-    const blocksList = blocks.map((block: BlockRecord, i: number) => {
-        return (
-            <NotionBlock block={block} key={`block-${block.id}`} />
-        )
-    })
-    return (<>{blocksList}</>);
+const ArticleContent = ({ postContent }: { postContent: ListBlockChildrenResponseResults }) => {
+    return collectList(postContent).map((block: BaseBlock, i: number) =>
+        <NotionBlock block={block} key={`block-${block.id}`} />
+    )
 }
-export default Article
+export default ArticleContent

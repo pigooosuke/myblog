@@ -2,12 +2,12 @@ import Prism from 'prismjs';
 import 'prismjs/components/prism-jsx';
 import styles from '@/styles/blocks.module.css'
 import {
-    BlockRecord,
-} from '@/types/note';
+    BaseBlock,
+} from '@/types/blog';
 
 
 
-const Code = ({ block }: { block: BlockRecord }) => {
+const Code = ({ block }: { block: BaseBlock }) => {
     const code = block[block.type].text[0].text.content
     const language = block[block.type].language || 'javascript'
 

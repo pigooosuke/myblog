@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     RichTextBlock
-} from '@/types/note';
+} from '@/types/blog';
 import { RichText } from "@/types/block"
 import 'katex/dist/katex.min.css'
 import Latex from 'react-latex-next'

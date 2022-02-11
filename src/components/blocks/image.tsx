@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image'
 import {
-    BlockRecord,
-} from '@/types/note';
+    BaseBlock,
+} from '@/types/blog';
 
 
-const ImageBlock = ({ block }: { block: BlockRecord }) => {
+const ImageBlock = ({ block }: { block: BaseBlock }) => {
     let image_url = block[block.type].file.url
     return (<>
         <div className="w-80 h-80 relative">
