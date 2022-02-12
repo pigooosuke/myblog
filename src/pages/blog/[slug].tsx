@@ -1,9 +1,11 @@
+import type { ReactElement } from 'react'
 import { GetStaticPropsContext } from "next";
 import { getPost, getPosts, getPostContent } from '@/lib/notion/client'
 import { QueryDatabaseResponseResults, ListBlockChildrenResponseResults } from '@/types/blog'
 import ArticleContent from '@/components/blogs/article'
 import { compact } from "lodash"
 import styles from "@/styles/article.module.css"
+import { LayoutMain } from '@/layout/main'
 
 
 interface Props {
@@ -76,4 +78,7 @@ const Post = ({ postId, postData, postContent }: Props) => {
         </>
     );
 }
+
+Post.getLayout = (page: ReactElement) => <LayoutMain>{page}</LayoutMain>
+
 export default Post;

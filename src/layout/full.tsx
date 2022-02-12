@@ -1,15 +1,17 @@
-import type { AppProps } from 'next/app'
+import { ReactElement } from 'react'
 import styles from '@/styles/index.module.css'
 import Header from '@/components/layouts/header'
 
+type LayoutProps = Required<{
+    readonly children: ReactElement
+}>
 
-function LayoutFull({ Component, pageProps }: AppProps) {
+export const LayoutFull = ({ children }: LayoutProps) => {
     return (
         <>
             <div className={styles.container}>
                 <Header />
-                <Component {...pageProps} />
+                {children}
             </div>
         </>)
 }
-export default LayoutFull

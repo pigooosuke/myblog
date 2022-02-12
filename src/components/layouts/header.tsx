@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styles from '@/styles/header.module.css'
 import { useState } from 'react'
+import Image from 'next/image'
 
 
 const Header = () => {
@@ -42,10 +43,24 @@ const Header = () => {
                     </button>
                 </div>
                 <div className={styles.menuList}>
+                    <div className={styles.menuRss}>
+                        <Link href="/rss/feed.xml" passHref>
+                            <a>
+                                <Image
+                                    src="/imgs/rss-64x64.png"
+                                    width={16}
+                                    height={16}
+                                    alt="rss"
+                                />
+                            </a>
+                        </Link>
+                    </div>
                     <div>
                         <Link href="/" passHref>
                             <a>Blog</a>
                         </Link>
+                    </div>
+                    <div>
                         <Link href="/about" passHref>
                             <a>About</a>
                         </Link>

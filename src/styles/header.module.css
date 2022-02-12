@@ -9,9 +9,10 @@
 .menuButtonhide {@apply hidden}
 
 .menuList {@apply hidden w-48 ml-auto mr-0 lg:flex lg:items-center lg:pr-12}
-.menuList > div {@apply text-sm lg:flex-grow}
-.menuList > div > a {@apply block mt-4 lg:inline-block lg:mt-0 hover:text-black}
-.menuList > div > a:not(:last-child) {@apply mr-4}
+.menuList > div {@apply flex text-sm lg:flex-grow}
+.menuList a {@apply block mt-4 lg:inline-block lg:mt-0 hover:text-black}
+.menuList a:not(:last-child) {@apply mr-4}
+.menuRss a {@apply mt-1}
 
 .sideMenu {@apply flex fixed overflow-hidden top-0 right-0 left-0 h-screen z-10 bg-white justify-between flex-wrap p-6}
 .sideMenuClosed {@apply hidden}

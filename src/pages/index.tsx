@@ -1,8 +1,10 @@
+import type { ReactElement, ReactNode } from 'react'
 import { BlogListView } from '@/components/blogs/blogListView'
 import { getPosts } from '@/lib/notion/client'
 import { buildPost, collectList } from '@/lib/notion/client'
 import { QueryDatabaseResponseRecord, Post } from '@/types/blog'
 import generateRSSFeed from '@/lib/feed'
+import { LayoutMain } from '@/layout/main'
 import styles from '@/styles/index.module.css'
 
 export async function getStaticProps() {
@@ -18,7 +20,7 @@ export async function getStaticProps() {
   }
 }
 
-const Home = ({ post_lists = [] }) => {
+const Home = ({ post_lists = [] }: { post_lists: QueryDatabaseResponseRecord[] }) => {
   return (
     <>
       <div className={styles.contents}>
@@ -29,5 +31,7 @@ const Home = ({ post_lists = [] }) => {
     </>
   )
 }
+
+Home.getLayout = (page: ReactElement) => <LayoutMain>{page}</LayoutMain>
 
 export default Home
