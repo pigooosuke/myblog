@@ -5,13 +5,13 @@ import Heading from '@/components/blocks/heading'
 import ImageBlock from '@/components/blocks/image'
 import Code from '@/components/blocks/code'
 import Quote from '@/components/blocks/quote'
-import BulletedList from '@/components/blocks/bulleted_list'
-import NumberedList from '@/components/blocks/numbered_list'
+import BulletedList from '@/components/blocks/bulletedList'
+import NumberedList from '@/components/blocks/numberedList'
 
 
-const NotionBlock = ({ block }: { block: BaseBlock }) => {
+export const NotionBlock = ({ block }: { block: BaseBlock }) => {
     if (block.type === 'paragraph') {
-        return <Paragraph block={block} key={`paragraph-${block.id}-${block.index}`} />
+        return <Paragraph block={block} key={`p-${block.id}`} />
     } else if (block.type === 'heading_1') {
         return <Heading block={block} level={1} />
     } else if (block.type === 'heading_2') {
@@ -27,9 +27,9 @@ const NotionBlock = ({ block }: { block: BaseBlock }) => {
     } else if (block.type === 'divider') {
         return <hr />
     } else if (block.type === 'bulleted_list_item') {
-        return <BulletedList block={block} />
+        return (<ul>{block.list_items.map((subblock: BaseBlock, i: number) => <BulletedList block={subblock} level={0} key={`ul-${subblock.id}-${i}`} />)}</ul>)
     } else if (block.type === 'numbered_list_item') {
-        return <NumberedList block={block} />
+        return (<ol>{block.list_items.map((subblock: BaseBlock, i: number) => <NumberedList block={subblock} level={0} key={`ol-${subblock.id}-${i}`} />)}</ol>)
     }
     // TODO block
     // 
@@ -41,5 +41,3 @@ const NotionBlock = ({ block }: { block: BaseBlock }) => {
 
     return null
 }
-
-export default NotionBlock

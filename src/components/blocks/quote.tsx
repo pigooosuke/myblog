@@ -11,7 +11,7 @@ const Quote = ({ block }: { block: BaseBlock }) => {
         return null
     }
     let text_blocks = block[block.type].text.map((text_block: RichTextBlock, i: number) => {
-        return buildText(text_block)
+        return buildText(text_block, i)
     })
     return (
         <blockquote>

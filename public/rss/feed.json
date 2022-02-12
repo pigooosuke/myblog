@@ -1,0 +1,62 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "pigoosuke site",
+    "home_page_url": "https://pigooosuke.com",
+    "feed_url": "https://pigooosuke.com/rss/feed.json",
+    "description": "pigooosuke site",
+    "icon": "https://pigooosuke.com/favicons/favicon-32x32.png",
+    "author": {
+        "name": "pigooosuke",
+        "url": "https://pigooosuke.com"
+    },
+    "items": [
+        {
+            "id": "https://pigooosuke.com/blog/test",
+            "url": "https://pigooosuke.com/blog/test",
+            "title": "test",
+            "date_modified": "2022-02-03T15:00:00.000Z"
+        },
+        {
+            "id": "https://pigooosuke.com/blog/item-recommendation-from-implicit-feedback",
+            "url": "https://pigooosuke.com/blog/item-recommendation-from-implicit-feedback",
+            "title": "Item Recommendation from Implicit Feedback",
+            "summary": "implicit feedbackで利用される内積モデルにおける学習アルゴリズムやサンプリングアルゴリズムについてのサマリー",
+            "date_modified": "2022-02-04T15:00:00.000Z"
+        },
+        {
+            "id": "https://pigooosuke.com/blog/a-generic-coordinate-descent-framework-for-learning-from-implicit-feedback",
+            "url": "https://pigooosuke.com/blog/a-generic-coordinate-descent-framework-for-learning-from-implicit-feedback",
+            "title": "A Generic Coordinate Descent Framework for Learning from Implicit Feedback",
+            "summary": "coordinate descent(座標降下法)は限られた単純なモデルにしか実用的ではない。効率的にimplicit feedback学習するための必要十分条件としてk-separableを紹介し、k-separable modelsのための汎用的なiCDを紹介する。iCDはMF,FM,tensor factorizationにも適用可能であることを示す。",
+            "date_modified": "2022-02-03T15:00:00.000Z"
+        },
+        {
+            "id": "https://pigooosuke.com/blog/revisiting-the-performance-of-ials-on-item-recommendation-benchmarks",
+            "url": "https://pigooosuke.com/blog/revisiting-the-performance-of-ials-on-item-recommendation-benchmarks",
+            "title": "Revisiting the Performance of iALS on Item Recommendation Benchmarks",
+            "summary": "近年、iALSを利用したMFは最新のモデルに対して競争力がなくなってきたという指摘がされている。この論文では、iALSにおける有用なTipsを紹介していく。過去に紹介された４つのベンチマーク論文についても、適切なチューニングを行えば高い性能を示すことができることを紹介する。",
+            "date_modified": "2022-01-04T15:00:00.000Z"
+        },
+        {
+            "id": "https://pigooosuke.com/blog/reenvisioning-the-comparison-between-neural-collaborative-filtering-and-matrix-factorization",
+            "url": "https://pigooosuke.com/blog/reenvisioning-the-comparison-between-neural-collaborative-filtering-and-matrix-factorization",
+            "title": "Reenvisioning the comparison between Neural Collaborative Filtering and Matrix Factorization",
+            "summary": "レコメンドにおけるニューラルネットモデル(ANN)が近年疑問視されているが、様々な比較において精度ばかりが注目されており、novelty, diversity, biasなどの重要な指標に関しての考察が十分になされていない。この論文ではNCF(NeuMF)とMFを比較する。MFはlong-tailに対してよりよい精度を示す一方で、NCFはitem-coverageや多様性において優れた点が確認された。また、テスト手法によるバイアス効果は存在するが、baselineの精度に影響を与えるほどのものではなかったことを確認した。",
+            "date_modified": "2021-12-31T15:00:00.000Z"
+        },
+        {
+            "id": "https://pigooosuke.com/blog/denoising-implicit-feedback-for-recommendation",
+            "url": "https://pigooosuke.com/blog/denoising-implicit-feedback-for-recommendation",
+            "title": "Denoising Implicit Feedback for Recommendation",
+            "summary": "多くのレコメンドシステムにおいて暗黙のフィードバックを利用している。しかし、多くのノイズが含まれており、例えば、ECではクリックしたのに購入されない。購入後に悪いレビューが投稿されたり、返品されるという事象が見られる。\n今回の研究では、新しい学習戦略であるAdaptive Denoising Training (ADT)を提案する。ADTは学習時のノイズとなるinteractionsを刈り取ることで、損失関数を最適化する。\n",
+            "date_modified": "2022-01-04T15:00:00.000Z"
+        },
+        {
+            "id": "https://pigooosuke.com/blog/neural-collaborative-filtering-vs-matrix-facotrization-revisited",
+            "url": "https://pigooosuke.com/blog/neural-collaborative-filtering-vs-matrix-facotrization-revisited",
+            "title": "Neural Collaborative Filtering vs. Matrix Factorization Revisited",
+            "summary": "協調フィルタリングにおいて、行列分解(e.g. MatrixFactorizaion)のようなEnbeddingに基づくレコメンドモデルは10年以上に渡って最先端を走ってきた。近年では、多層パーセプトロン(MLP)を用いた学習によって得られた類似度の活用が提案されている。このアプローチはNeural Collaborative Fitering(NCF)と呼ばれる。この研究ではNCFの論文実験を見直した。第一に、適切なハイパーパラメータを選択することで、単純な内積の学習がMLPを大幅に上回ることを示す。第二に、MLPは理論的にはいかなる関数にも近似できるが、MLPによる内積の学習は簡単ではないということを示す。最後に、production環境において内積モデルは効率的なアルゴリズムになりうるが、MLPベースの類似度は運用コストが高すぎると示す。内積モデルはよりよい選択になりうると結論付けた。",
+            "date_modified": "2022-01-04T15:00:00.000Z"
+        }
+    ]
+}

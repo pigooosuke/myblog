@@ -1,8 +1,9 @@
 import { GetStaticPropsContext } from "next";
 import { getPost, getPosts, getPostContent } from '@/lib/notion/client'
 import { QueryDatabaseResponseResults, ListBlockChildrenResponseResults } from '@/types/blog'
-import ArticleContent from '@/components/article'
+import ArticleContent from '@/components/blogs/article'
 import { compact } from "lodash"
+import styles from "@/styles/article.module.css"
 
 
 interface Props {
@@ -68,7 +69,7 @@ const Post = ({ postId, postData, postContent }: Props) => {
     }
     return (
         <>
-            <div>
+            <div className={styles.article}>
                 {/* <ArticleMeta postData={postData} /> */}
                 <ArticleContent postContent={postContent} />
             </div >

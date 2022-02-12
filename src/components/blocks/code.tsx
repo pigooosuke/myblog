@@ -1,20 +1,25 @@
+import { useEffect } from 'react';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-jsx';
-import styles from '@/styles/blocks.module.css'
 import {
     BaseBlock,
 } from '@/types/blog';
-
-
+import "prismjs/themes/prism-tomorrow.css";
+import 'prismjs/components/prism-jsx.js'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 const Code = ({ block }: { block: BaseBlock }) => {
+    useEffect(() => {
+        Prism.highlightAll()
+    }, [])
     const code = block[block.type].text[0].text.content
     const language = block[block.type].language || 'javascript'
 
     return (
-        <div className={styles.code}>
-            <pre>
-                <code
+        <div>
+            <pre className="line-numbers">
+                <code className='language-jsx'
                     dangerouslySetInnerHTML={{
                         __html: Prism.highlight(
                             code!,

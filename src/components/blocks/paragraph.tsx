@@ -11,9 +11,9 @@ const Paragraph = ({ block }: { block: BaseBlock }) => {
         return null
     }
     let text_blocks = block[block.type].text.map((text_block: RichTextBlock, i: number) => {
-        return buildText(text_block)
+        return buildText(text_block, i)
     })
-    return (<p key={`p-${block.id}`}>{text_blocks}</p>)
+    return (<p>{text_blocks}</p>)
 }
 
 export default Paragraph

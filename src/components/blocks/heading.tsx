@@ -11,9 +11,9 @@ const Heading = ({ block, level }: { block: BaseBlock, level: number }) => {
         return null
     }
     let text_blocks = block[block.type].text.map((text_block: RichTextBlock, i: number) => {
-        return buildText(text_block)
+        return buildText(text_block, i)
     })
-    const tag = `h${level + 3}`
+    const tag = `h${level + 2}`
     const heading = React.createElement(tag, {}, text_blocks)
 
     return (<>{heading}</>)

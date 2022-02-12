@@ -3,6 +3,7 @@ export interface RichText {
     content: string
     annotations: Annotation
     href: string
+    index: number
 }
 
 export interface Annotation {

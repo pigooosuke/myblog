@@ -45,8 +45,8 @@ export async function getPostContent(id: string) {
     // get children blocks: inefficient loop
     for (const block of postContent.results) {
         if (block.has_children === true) {
-            let list_items = await getPostContent(block.id)
-            results.push({ list_items: list_items, ...block })
+            let children = await getPostContent(block.id)
+            results.push({ children: children, ...block })
         } else {
             results.push({ ...block })
         }
@@ -59,8 +59,8 @@ export async function getPostContent(id: string) {
         // get children blocks: inefficient loop
         for (const block of postContent.results) {
             if (block.has_children === true) {
-                let list_items = await getPostContent(block.id)
-                results.push({ list_items: list_items, ...block })
+                let children = await getPostContent(block.id)
+                results.push({ children: children, ...block })
             } else {
                 results.push({ ...block })
             }

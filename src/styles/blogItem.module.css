@@ -5,7 +5,6 @@
 .blogItemTags > ul {@apply flex}
 .blogItemTags > ul > li {@apply p-0 pr-2 last:pr-0 text-sm text-gray-500 underline}
 
-
 .blogItemContents {@apply mb-4}
 .blogItemDate {@apply text-gray-400 font-bold text-base mb-2}
 .blogItemDescription {@apply border-l-4 pl-4 text-gray-700 text-sm}
