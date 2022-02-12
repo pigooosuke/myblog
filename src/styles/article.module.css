@@ -19,3 +19,6 @@
 
 .article pre {@apply block ml-3 pr-2 pl-4 py-3 text-white bg-black leading-tight text-sm}
 .article code {@apply  text-white bg-black}
+.article blockquote {@apply border-l-2 border-cyan-200 pl-2}
+
+.article a {@apply text-gray-400}

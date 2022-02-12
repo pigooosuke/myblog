@@ -3,6 +3,7 @@ import { getPosts } from '@/lib/notion/client'
 import { buildPost, collectList } from '@/lib/notion/client'
 import { QueryDatabaseResponseRecord, Post } from '@/types/blog'
 import generateRSSFeed from '@/lib/feed'
+import styles from '@/styles/index.module.css'
 
 export async function getStaticProps() {
   const posts = await getPosts()
@@ -20,9 +21,11 @@ export async function getStaticProps() {
 const Home = ({ post_lists = [] }) => {
   return (
     <>
-      {post_lists.map((post: Post) => {
-        return (<BlogListView post={post} key={post.slug} />)
-      })}
+      <div className={styles.contents}>
+        {post_lists.map((post: Post) => {
+          return (<BlogListView post={post} key={post.slug} />)
+        })}
+      </div>
     </>
   )
 }

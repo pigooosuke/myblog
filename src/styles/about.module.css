@@ -1,0 +1,4 @@
+.profile {@apply w-screen flex flex-col justify-center items-center}
+.img{}
+.name {@apply text-3xl font-medium}
+.social {@apply  justify-center mt-5}

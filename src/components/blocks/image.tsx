@@ -8,7 +8,7 @@ import {
 const ImageBlock = ({ block }: { block: BaseBlock }) => {
     let image_url = block[block.type].file.url
     return (<>
-        <div className="w-80 h-80 relative">
+        <div className="min-w-80 max-h-240 relative">
             <Image
                 src={image_url}
                 className='object-contain h-2/5 m-auto'
