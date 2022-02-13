@@ -4,7 +4,7 @@
         <title>pigoosuke site</title>
         <link>https://pigooosuke.com</link>
         <description>pigooosuke site</description>
-        <lastBuildDate>Sat, 12 Feb 2022 14:53:57 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 13 Feb 2022 04:12:43 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ja</language>
@@ -14,12 +14,6 @@
             <link>https://pigooosuke.com</link>
         </image>
         <copyright>All rights reserved 2022, pigooosuke</copyright>
-        <item>
-            <title><![CDATA[test]]></title>
-            <link>https://pigooosuke.com/blog/test</link>
-            <guid>https://pigooosuke.com/blog/test</guid>
-            <pubDate>Thu, 03 Feb 2022 15:00:00 GMT</pubDate>
-        </item>
         <item>
             <title><![CDATA[Item Recommendation from Implicit Feedback]]></title>
             <link>https://pigooosuke.com/blog/item-recommendation-from-implicit-feedback</link>

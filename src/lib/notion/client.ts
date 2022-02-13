@@ -22,6 +22,12 @@ export async function queryDatabase(pageSize: number = 10) {
                 direction: 'descending',
             },
         ],
+        filter: {
+            property: "publish",
+            checkbox: {
+                equals: true,
+            },
+        },
         page_size: pageSize,
     };
     return await notion.databases.query(params);
@@ -117,6 +123,13 @@ export async function getPosts() {
                 direction: 'descending',
             },
         ],
+        filter: {
+            property: "publish",
+            checkbox: {
+                equals: true,
+            },
+        }
+        ,
         page_size: 100,
     };
     let postContents = await notion.databases.query(params);

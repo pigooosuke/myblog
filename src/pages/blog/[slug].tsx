@@ -3,9 +3,11 @@ import { GetStaticPropsContext } from "next";
 import { getPost, getPosts, getPostContent } from '@/lib/notion/client'
 import { QueryDatabaseResponseResults, ListBlockChildrenResponseResults } from '@/types/blog'
 import ArticleContent from '@/components/blogs/article'
+import ArticleHeader from '@/components/blogs/article_header'
 import { compact } from "lodash"
 import styles from "@/styles/article.module.css"
 import { LayoutMain } from '@/layout/main'
+import { uploadAssetsFromBlocks } from '@/lib/next-notion-s3-assets'
 
 
 interface Props {
@@ -31,6 +33,8 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
         getPost(matchedPost.id),
         getPostContent(matchedPost.id),
     ])
+    // upload asset
+    uploadAssetsFromBlocks(postContent)
     // Next.js passes the data to my React template for rendering
     return {
         props: {
@@ -72,7 +76,7 @@ const Post = ({ postId, postData, postContent }: Props) => {
     return (
         <>
             <div className={styles.article}>
-                {/* <ArticleMeta postData={postData} /> */}
+                <ArticleHeader postData={postData} />
                 <ArticleContent postContent={postContent} />
             </div >
         </>

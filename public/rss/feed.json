@@ -11,12 +11,6 @@
     },
     "items": [
         {
-            "id": "https://pigooosuke.com/blog/test",
-            "url": "https://pigooosuke.com/blog/test",
-            "title": "test",
-            "date_modified": "2022-02-03T15:00:00.000Z"
-        },
-        {
             "id": "https://pigooosuke.com/blog/item-recommendation-from-implicit-feedback",
             "url": "https://pigooosuke.com/blog/item-recommendation-from-implicit-feedback",
             "title": "Item Recommendation from Implicit Feedback",

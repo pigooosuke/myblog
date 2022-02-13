@@ -40,10 +40,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "scripts/blog-index-cache.js",
-    "scripts/set-blog-index-cache.js",
-    "scripts/expire-blog-index-cache.js"
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"

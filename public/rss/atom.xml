@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pigooosuke.com</id>
     <title>pigoosuke site</title>
-    <updated>2022-02-12T14:53:57.114Z</updated>
+    <updated>2022-02-13T04:12:43.264Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>pigooosuke</name>
@@ -14,12 +14,6 @@
     <subtitle>pigooosuke site</subtitle>
     <logo>https://pigooosuke.com/favicons/favicon-32x32.png</logo>
     <rights>All rights reserved 2022, pigooosuke</rights>
-    <entry>
-        <title type="html"><![CDATA[test]]></title>
-        <id>https://pigooosuke.com/blog/test</id>
-        <link href="https://pigooosuke.com/blog/test"/>
-        <updated>2022-02-03T15:00:00.000Z</updated>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Item Recommendation from Implicit Feedback]]></title>
         <id>https://pigooosuke.com/blog/item-recommendation-from-implicit-feedback</id>

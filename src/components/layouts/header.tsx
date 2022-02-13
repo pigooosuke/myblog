@@ -1,6 +1,7 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import styles from '@/styles/header.module.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 
@@ -9,6 +10,11 @@ const Header = () => {
     const openSideMenu = () => {
         setsideMenuOpen(!sideMenuOpen)
     }
+
+    const router = useRouter()
+    useEffect(() => {
+        setsideMenuOpen(false);
+    }, [router.asPath])
 
     return (
         <>
