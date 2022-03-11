@@ -4,7 +4,7 @@
         <title>pigoosuke site</title>
         <link>https://pigooosuke.com</link>
         <description>pigooosuke site</description>
-        <lastBuildDate>Sun, 13 Feb 2022 04:12:43 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 11 Mar 2022 13:16:37 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ja</language>
@@ -14,6 +14,20 @@
             <link>https://pigooosuke.com</link>
         </image>
         <copyright>All rights reserved 2022, pigooosuke</copyright>
+        <item>
+            <title><![CDATA[モノレポ設計とGraphQLのサンプル作成]]></title>
+            <link>https://pigooosuke.com/blog/mymonorepo</link>
+            <guid>https://pigooosuke.com/blog/mymonorepo</guid>
+            <pubDate>Fri, 04 Mar 2022 15:00:00 GMT</pubDate>
+            <description><![CDATA[サービス開発作業をする上で毎回repositoryを設計する作業にだいぶ工数が取られると思い、今流行ってる技術を利用したモノレポを改めて整備しました。]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Notionを利用してBlogサービスを作成してみた]]></title>
+            <link>https://pigooosuke.com/blog/notion-api-blog</link>
+            <guid>https://pigooosuke.com/blog/notion-api-blog</guid>
+            <pubDate>Sun, 30 Jan 2022 15:00:00 GMT</pubDate>
+            <description><![CDATA[Notionで管理されているドキュメントをBlogとして公開するようにしました。フレームワークはNextJSを利用しています。]]></description>
+        </item>
         <item>
             <title><![CDATA[Item Recommendation from Implicit Feedback]]></title>
             <link>https://pigooosuke.com/blog/item-recommendation-from-implicit-feedback</link>

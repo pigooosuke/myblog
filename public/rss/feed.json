@@ -11,6 +11,20 @@
     },
     "items": [
         {
+            "id": "https://pigooosuke.com/blog/mymonorepo",
+            "url": "https://pigooosuke.com/blog/mymonorepo",
+            "title": "モノレポ設計とGraphQLのサンプル作成",
+            "summary": "サービス開発作業をする上で毎回repositoryを設計する作業にだいぶ工数が取られると思い、今流行ってる技術を利用したモノレポを改めて整備しました。",
+            "date_modified": "2022-03-04T15:00:00.000Z"
+        },
+        {
+            "id": "https://pigooosuke.com/blog/notion-api-blog",
+            "url": "https://pigooosuke.com/blog/notion-api-blog",
+            "title": "Notionを利用してBlogサービスを作成してみた",
+            "summary": "Notionで管理されているドキュメントをBlogとして公開するようにしました。フレームワークはNextJSを利用しています。",
+            "date_modified": "2022-01-30T15:00:00.000Z"
+        },
+        {
             "id": "https://pigooosuke.com/blog/item-recommendation-from-implicit-feedback",
             "url": "https://pigooosuke.com/blog/item-recommendation-from-implicit-feedback",
             "title": "Item Recommendation from Implicit Feedback",
