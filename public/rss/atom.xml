@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pigooosuke.com</id>
     <title>pigoosuke site</title>
-    <updated>2022-03-11T13:16:37.638Z</updated>
+    <updated>2022-04-01T15:08:52.057Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>pigooosuke</name>
@@ -14,6 +14,13 @@
     <subtitle>pigooosuke site</subtitle>
     <logo>https://pigooosuke.com/favicons/favicon-32x32.png</logo>
     <rights>All rights reserved 2022, pigooosuke</rights>
+    <entry>
+        <title type="html"><![CDATA[ロジスティック回帰における交差エントロピー誤差が凸関数であることの証明]]></title>
+        <id>https://pigooosuke.com/blog/cross-entropy</id>
+        <link href="https://pigooosuke.com/blog/cross-entropy"/>
+        <updated>2022-04-04T15:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ロジスティック回帰における交差エントロピー誤差が凸関数であることの証明]]></summary>
+    </entry>
     <entry>
         <title type="html"><![CDATA[モノレポ設計とGraphQLのサンプル作成]]></title>
         <id>https://pigooosuke.com/blog/mymonorepo</id>
