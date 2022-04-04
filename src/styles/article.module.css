@@ -24,4 +24,4 @@
 
 .article a {@apply text-gray-400}
 
-h1.header_title {@apply border-l-0 pl-0}
+h1.header_title {@apply text-2xl border-l-0 pl-0}

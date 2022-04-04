@@ -12,9 +12,16 @@ const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-export async function queryDatabase(pageSize: number = 10) {
+type queryDatabaseParam = {
+  database_id: string;
+  sorts: unknown;
+  page_size: number;
+  filter?: unknown;
+};
+
+export async function queryDatabase(pageSize: number = 10, preview?: boolean) {
   // get Posts order by created desc
-  let params = {
+  let params: queryDatabaseParam = {
     database_id: process.env.DATABASE_ID,
     sorts: [
       {
@@ -22,14 +29,17 @@ export async function queryDatabase(pageSize: number = 10) {
         direction: "descending",
       },
     ],
-    filter: {
+    page_size: pageSize,
+  };
+  if (!preview) {
+    params.filter = {
       property: "publish",
       checkbox: {
         equals: true,
       },
-    },
-    page_size: pageSize,
-  };
+    };
+  }
+
   return await notion.databases.query(params);
 }
 
@@ -106,10 +116,10 @@ export const collectList = (blocks: BaseBlock[]) =>
     return arr;
   }, []);
 
-export async function getPosts() {
+export async function getPosts(pageSize: number = 10, preview?: boolean) {
   // get all posts
   let results = [];
-  let params = {
+  let params: queryDatabaseParam = {
     database_id: process.env.DATABASE_ID,
     sorts: [
       {
@@ -117,14 +127,16 @@ export async function getPosts() {
         direction: "descending",
       },
     ],
-    filter: {
+    page_size: pageSize,
+  };
+  if (!preview) {
+    params.filter = {
       property: "publish",
       checkbox: {
         equals: true,
       },
-    },
-    page_size: 100,
-  };
+    };
+  }
   let postContents = await notion.databases.query(params);
   results = [...postContents.results];
   while (postContents.has_more) {

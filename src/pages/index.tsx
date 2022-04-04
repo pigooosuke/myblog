@@ -6,18 +6,20 @@ import { QueryDatabaseResponseRecord, Post } from "@/types/blog";
 import generateRSSFeed from "@/lib/feed";
 import { LayoutMain } from "@/layout/main";
 import styles from "@/styles/index.module.css";
+import { GetStaticPropsContext } from "next";
 
-export async function getStaticProps() {
+export async function getStaticProps(context: GetStaticPropsContext) {
   const posts = await getPosts();
   let post_lists = collectList(posts).map(
     (block: QueryDatabaseResponseRecord) => buildPost(block)
   );
   // generate rss feed
-  generateRSSFeed(post_lists);
+  !context.preview && generateRSSFeed(post_lists);
 
   return {
     props: {
       post_lists,
+      preview: Boolean(context.preview),
     },
     revalidate: 60,
   };

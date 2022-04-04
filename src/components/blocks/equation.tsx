@@ -7,7 +7,6 @@ const Equation = ({ block }: { block: BaseBlock }) => {
   if (!block) {
     return null;
   }
-  console.log(block);
   let token = "\\(" + block.equation.expression + "\\)";
   return <Latex key={`latex`}>{token}</Latex>;
 };
