@@ -28,9 +28,9 @@ export interface RichTextBlock {
   type: "text";
   text: {
     content: string;
-    link: {
+    link?: {
       url: string;
-    } | null;
+    };
   };
   annotations: {
     bold: boolean;
@@ -41,7 +41,7 @@ export interface RichTextBlock {
     color: string;
   };
   plain_text: string;
-  href: string | null;
+  href?: string;
 }
 
 export interface Post {
