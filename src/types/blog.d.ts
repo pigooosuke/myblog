@@ -24,25 +24,9 @@ declare type ListBlockChildrenResponseResults = PickType<
 >;
 declare type BaseBlock = typeof ListBlockChildrenResponseResults[number];
 
-export interface RichTextBlock {
-  type: "text";
-  text: {
-    content: string;
-    link?: {
-      url: string;
-    };
-  };
-  annotations: {
-    bold: boolean;
-    italic: boolean;
-    strikethrough: boolean;
-    underline: boolean;
-    code: boolean;
-    color: string;
-  };
-  plain_text: string;
-  href?: string;
-}
+type ParagraphBlock = PickType<BaseBlock, "paragraph">;
+type ParagraphTextBlock = PickType<ParagraphBlock, "text">;
+declare type RichTextBlock = typeof ParagraphTextBlock[number];
 
 export interface Post {
   page_id: string;
