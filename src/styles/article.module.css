@@ -1,6 +1,5 @@
 .article {@apply lg:px-64 mb-5}
 
-
 .article h1 {@apply border-l-4 pl-4 border-orange-600 text-5xl font-black my-4}
 .article h2 {@apply border-l-4 pl-4 border-orange-500 text-4xl font-extrabold my-4}
 .article h3 {@apply border-l-4 pl-4 border-orange-400 text-3xl font-bold my-4}
