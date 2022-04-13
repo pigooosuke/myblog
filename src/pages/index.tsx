@@ -7,6 +7,7 @@ import generateRSSFeed from "@/lib/feed";
 import { LayoutMain } from "@/layout/main";
 import styles from "@/styles/index.module.css";
 import { GetStaticPropsContext } from "next";
+import CommonMeta from "@/components/meta/CommonMeta";
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const posts = await getPosts();
@@ -41,6 +42,11 @@ const Home = ({
   );
 };
 
-Home.getLayout = (page: ReactElement) => <LayoutMain>{page}</LayoutMain>;
+Home.getLayout = (page: ReactElement) => (
+  <>
+    <CommonMeta />
+    <LayoutMain>{page}</LayoutMain>
+  </>
+);
 
 export default Home;

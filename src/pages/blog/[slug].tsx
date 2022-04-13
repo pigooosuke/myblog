@@ -1,20 +1,19 @@
 import type { ReactElement } from "react";
 import { GetStaticPropsContext } from "next";
 import { getPost, getPosts, getPostContent } from "@/lib/notion/client";
-import {
-  QueryDatabaseResponseResults,
-  ListBlockChildrenResponseResults,
-} from "@/types/blog";
+import { Post, ListBlockChildrenResponseResults } from "@/types/blog";
 import ArticleContent from "@/components/blogs/article";
-import ArticleHeader from "@/components/blogs/article_header";
+import ArticleHeader from "@/components/blogs/articleHeader";
 import { compact } from "lodash";
 import styles from "@/styles/article.module.css";
 import { LayoutMain } from "@/layout/main";
 import { uploadAssetsFromBlocks } from "@/lib/next-notion-s3-assets";
+import CommonMeta from "@/components/meta/CommonMeta";
+import { buildPost } from "@/lib/notion/client";
 
 interface Props {
   postId: string;
-  postData: QueryDatabaseResponseResults;
+  post: Post;
   postContent: ListBlockChildrenResponseResults;
 }
 
@@ -37,10 +36,13 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   // upload asset
   uploadAssetsFromBlocks(postContent);
   // Next.js passes the data to my React template for rendering
+
+  let post = buildPost(postData);
+
   return {
     props: {
       postId: matchedPost.id,
-      postData,
+      post,
       postContent,
     },
     revalidate: 60,
@@ -66,7 +68,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-const Post = ({ postId, postData, postContent }: Props) => {
+const Article = ({ postId, post, postContent }: Props) => {
   if (!postId) {
     return {
       notFound: true,
@@ -75,14 +77,19 @@ const Post = ({ postId, postData, postContent }: Props) => {
   }
   return (
     <>
+      <CommonMeta title={post.title} description={post.description} />
       <div className={styles.article}>
-        <ArticleHeader postData={postData} />
+        <ArticleHeader post={post} />
         <ArticleContent postContent={postContent} />
       </div>
     </>
   );
 };
 
-Post.getLayout = (page: ReactElement) => <LayoutMain>{page}</LayoutMain>;
+Article.getLayout = (page: ReactElement) => (
+  <>
+    <LayoutMain>{page}</LayoutMain>
+  </>
+);
 
-export default Post;
+export default Article;

@@ -1,19 +1,17 @@
-import React from 'react';
-import {
-    BaseBlock,
-    RichTextBlock
-} from '@/types/blog';
-import { buildText } from "@/components/blocks/block_utils"
-
+import React from "react";
+import { BaseBlock, RichTextBlock } from "@/types/blog";
+import { buildText } from "@/components/blocks/blockUtils";
 
 const Paragraph = ({ block }: { block: BaseBlock }) => {
-    if (!block) {
-        return null
+  if (!block) {
+    return null;
+  }
+  let text_blocks = block[block.type].text.map(
+    (text_block: RichTextBlock, i: number) => {
+      return buildText(text_block, i);
     }
-    let text_blocks = block[block.type].text.map((text_block: RichTextBlock, i: number) => {
-        return buildText(text_block, i)
-    })
-    return (<p>{text_blocks}</p>)
-}
+  );
+  return <p>{text_blocks}</p>;
+};
 
-export default Paragraph
+export default Paragraph;
