@@ -20,13 +20,11 @@ const Header = () => {
       <div className={styles.header}>
         <div className={styles.logo}>
           <Link href="/" passHref>
-            <span>
-              <a>Pigooosuke</a>
-            </span>
+            <a>Pigooosuke</a>
           </Link>
         </div>
         <div className={styles.menuButtonOpen} onClick={openSideMenu}>
-          <button name="toggleButton">
+          <button aria-label="toggle">
             <svg
               width="24"
               height="24"

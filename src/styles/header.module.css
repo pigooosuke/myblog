@@ -1,7 +1,6 @@
 .header {@apply flex items-center justify-between flex-wrap p-6}
 
-.logo {@apply flex items-center flex-shrink-0 text-black mr-auto lg:pb-12 lg:pt-12 lg:pl-12 }
-.logo > span {@apply font-semibold text-3xl tracking-widest}
+.logo {@apply flex items-center flex-shrink-0 text-black mr-auto lg:pb-12 lg:pt-12 lg:pl-12 font-semibold text-3xl tracking-widest}
 
 .menuButtonOpen {@apply block lg:hidden}
 .menuButtonOpen > button {@apply flex items-center}
