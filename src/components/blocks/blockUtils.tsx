@@ -1,6 +1,5 @@
 import React from "react";
-import { RichTextBlock } from "@/types/blog";
-import { RichText } from "@/types/block";
+import { RichTextBlock, RichText } from "@/types/blog";
 import "katex/dist/katex.min.css";
 import Latex from "react-latex-next";
 
@@ -43,20 +42,13 @@ const _DecorateText = (rich_text: RichText) => {
 export const buildText = (text_block: RichTextBlock, index: number) => {
   let rich_text: RichText = {
     type: text_block.type,
-    content: text_block[text_block.type].content,
+    content:
+      text_block.type === "text"
+        ? text_block.text.content
+        : text_block.equation.expression,
     annotations: text_block.annotations,
     href: text_block.href,
     index: index,
   };
-  switch (text_block.type) {
-    case "text":
-      rich_text.content = text_block.text.content;
-      break;
-    case "equation":
-      rich_text.content = text_block.equation.expression;
-      break;
-    default:
-      rich_text.content = "unknown text block";
-  }
   return _DecorateText(rich_text);
 };
