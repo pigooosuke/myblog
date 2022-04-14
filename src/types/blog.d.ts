@@ -1,21 +1,8 @@
 import internal from "stream";
-import {
-  QueryDatabaseResponse,
-  BlockObjectResponse,
-  ListBlockChildrenResponse,
-} from "@notionhq/client/build/src/api-endpoints";
+import { ListBlockChildrenResponse } from "@notionhq/client/build/src/api-endpoints";
 
 // utils
-type PickProps<T, K extends keyof T> = { [P in Extract<keyof T, K>]: T[P] };
 type PickType<T, K extends keyof T> = T[K];
-
-// notion.databases.query
-declare type QueryDatabaseResponseResults = PickProps<
-  QueryDatabaseResponse,
-  "results"
->;
-declare type QueryDatabaseResponseRecord =
-  typeof QueryDatabaseResponseResults[number];
 
 // notion.blocks.children.list
 declare type ListBlockChildrenResponseResults = PickType<
@@ -30,7 +17,7 @@ export interface Post {
   title: string;
   tags: string[];
   paper_url?: string;
-  description?: string;
+  description: string;
   created: string;
 }
 
@@ -56,8 +43,6 @@ interface Annotation {
   code: boolean;
   color: string;
 }
-
-//
 
 type RichTextBlockText = {
   type: "text";

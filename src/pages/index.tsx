@@ -2,7 +2,7 @@ import type { ReactElement } from "react";
 import { BlogListView } from "@/components/blogs/blogListView";
 import { getPosts } from "@/lib/notion/client";
 import { buildPost, collectList } from "@/lib/notion/client";
-import { QueryDatabaseResponseRecord, Post } from "@/types/blog";
+import { Post } from "@/types/blog";
 import generateRSSFeed from "@/lib/feed";
 import { LayoutMain } from "@/layout/main";
 import styles from "@/styles/index.module.css";
@@ -11,9 +11,7 @@ import CommonMeta from "@/components/meta/CommonMeta";
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const posts = await getPosts();
-  let post_lists = collectList(posts).map(
-    (block: QueryDatabaseResponseRecord) => buildPost(block)
-  );
+  let post_lists = collectList(posts).map((block: Post) => buildPost(block));
   // generate rss feed
   !context.preview && generateRSSFeed(post_lists);
 
@@ -26,11 +24,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   };
 }
 
-const Home = ({
-  post_lists = [],
-}: {
-  post_lists: QueryDatabaseResponseRecord[];
-}) => {
+const Home = ({ post_lists = [] }: { post_lists: Post[] }) => {
   return (
     <>
       <div className={styles.contents}>

@@ -1,9 +1,4 @@
-import {
-  Post,
-  QueryDatabaseResponseRecord,
-  BaseBlock,
-  PostMetaTags,
-} from "@/types/blog";
+import { Post, BaseBlock, PostMetaTags } from "@/types/blog";
 import { parseISO } from "date-fns";
 import { format } from "date-fns-tz";
 const { Client } = require("@notionhq/client");
@@ -149,7 +144,7 @@ export async function getPosts(pageSize: number = 10, preview?: boolean) {
   return results;
 }
 
-export function buildPost(block: QueryDatabaseResponseRecord) {
+export function buildPost(block: BaseBlock) {
   const prop = block.properties;
 
   const post: Post = {
