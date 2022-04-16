@@ -1,12 +1,12 @@
 import React from "react";
-import { BaseBlock, RichTextBlock } from "@/types/blog";
+import { ParagraphBlock, RichTextBlock } from "@/types/blog";
 import { buildText } from "@/components/blocks/blockUtils";
 
-const Paragraph = ({ block }: { block: BaseBlock }) => {
-  if (!block) {
+const Paragraph = ({ paragraph }: { paragraph: ParagraphBlock }) => {
+  if (!paragraph) {
     return null;
   }
-  let text_blocks = block[block.type].text.map(
+  let text_blocks = paragraph.paragraph!.text.map(
     (text_block: RichTextBlock, i: number) => {
       return buildText(text_block, i);
     }

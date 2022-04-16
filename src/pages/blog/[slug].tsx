@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { GetStaticPropsContext } from "next";
 import { getPost, getPosts, getPostContent } from "@/lib/notion/client";
-import { Post, ListBlockChildrenResponseResults } from "@/types/blog";
+import { Post, BaseBlock } from "@/types/blog";
 import ArticleContent from "@/components/blogs/article";
 import ArticleHeader from "@/components/blogs/articleHeader";
 import { compact } from "lodash";
@@ -14,7 +14,7 @@ import { buildPost } from "@/lib/notion/client";
 interface Props {
   postId: string;
   post: Post;
-  postContent: ListBlockChildrenResponseResults;
+  postContent: BaseBlock[];
 }
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
@@ -34,7 +34,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     getPostContent(matchedPost.id),
   ]);
   // upload asset
-  uploadAssetsFromBlocks(postContent);
+  // uploadAssetsFromBlocks(postContent);
   // Next.js passes the data to my React template for rendering
 
   let post = buildPost(postData);

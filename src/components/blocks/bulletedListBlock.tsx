@@ -1,9 +1,9 @@
 import React from "react";
-import { BaseBlock, RichTextBlock } from "@/types/blog";
+import { BaseBlock, RichTextBlock, BulletedListItem } from "@/types/blog";
 import "katex/dist/katex.min.css";
 import { buildText } from "@/components/blocks/blockUtils";
 
-const NumberedList = ({
+const BulletedList = ({
   block,
   level,
 }: {
@@ -13,14 +13,18 @@ const NumberedList = ({
   let children = null;
   if (block.children) {
     children = (
-      <ol>
+      <ul>
         {block.children.map((block: BaseBlock, i: number) => (
-          <NumberedList block={block} level={level + 1} key={`${level}-${i}`} />
+          <BulletedList block={block} level={level + 1} key={`${level}-${i}`} />
         ))}
-      </ol>
+      </ul>
     );
   }
-  let text_blocks = block[block.type].text.map(
+  if (block.type !== "bulleted_list_item") {
+    return null;
+  }
+  let bulleted_list_item = block as BulletedListItem;
+  let text_blocks = bulleted_list_item.bulleted_list_item.text.map(
     (text_block: RichTextBlock, i: number) => {
       return buildText(text_block, i);
     }
@@ -34,4 +38,4 @@ const NumberedList = ({
   );
 };
 
-export default NumberedList;
+export default BulletedList;

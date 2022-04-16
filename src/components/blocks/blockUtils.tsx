@@ -40,12 +40,19 @@ const _DecorateText = (rich_text: RichText) => {
 };
 
 export const buildText = (text_block: RichTextBlock, index: number) => {
+  const content = (() => {
+    if (text_block.type === "text") {
+      return text_block.text.content;
+    } else if (text_block.type === "equation") {
+      return text_block.equation.expression;
+    } else {
+      return "empty";
+    }
+  })();
+
   let rich_text: RichText = {
     type: text_block.type,
-    content:
-      text_block.type === "text"
-        ? text_block.text.content
-        : text_block.equation.expression,
+    content: content,
     annotations: text_block.annotations,
     href: text_block.href,
     index: index,

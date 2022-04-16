@@ -1,12 +1,8 @@
 import { NotionBlock } from "@/components/blocks/notionBlocks";
-import { BaseBlock, ListBlockChildrenResponseResults } from "@/types/blog";
+import { BaseBlock } from "@/types/blog";
 import { collectList } from "@/lib/notion/client";
 
-const ArticleContent = ({
-  postContent,
-}: {
-  postContent: ListBlockChildrenResponseResults;
-}) => {
+const ArticleContent = ({ postContent }: { postContent: BaseBlock[] }) => {
   return collectList(postContent).map((block: BaseBlock, i: number) => (
     <NotionBlock block={block} key={`block-${block.id}-${i}`} />
   ));

@@ -50,9 +50,9 @@ export async function getPostContent(id: string) {
     block_id: id,
     page_size: 100,
   };
-  let postContent = await notion.blocks.children.list(params);
+  let resp = await notion.blocks.children.list(params);
   // get children blocks: inefficient loop
-  for (const block of postContent.results) {
+  for (const block of resp.results) {
     if (block.has_children === true) {
       let children = await getPostContent(block.id);
       results.push({ children: children, ...block });
@@ -60,13 +60,13 @@ export async function getPostContent(id: string) {
       results.push({ ...block });
     }
   }
-  while (postContent.has_more) {
-    postContent = await notion.blocks.children.list({
+  while (resp.has_more) {
+    resp = await notion.blocks.children.list({
       ...params,
-      start_cursor: postContent.next_cursor,
+      start_cursor: resp.next_cursor,
     });
     // get children blocks: inefficient loop
-    for (const block of postContent.results) {
+    for (const block of resp.results) {
       if (block.has_children === true) {
         let children = await getPostContent(block.id);
         results.push({ children: children, ...block });
@@ -79,7 +79,7 @@ export async function getPostContent(id: string) {
 }
 
 export const collectList = (blocks: BaseBlock[]) =>
-  blocks.reduce((arr, block, i) => {
+  blocks.reduce((arr: any, block, i) => {
     const isBulletedListItem = block.type === "bulleted_list_item";
     const isNumberedListItem = block.type === "numbered_list_item";
 
@@ -132,19 +132,19 @@ export async function getPosts(pageSize: number = 10, preview?: boolean) {
       },
     };
   }
-  let postContents = await notion.databases.query(params);
-  results = [...postContents.results];
-  while (postContents.has_more) {
-    postContents = await notion.blocks.children.list({
+  let resp = await notion.databases.query(params);
+  results = [...resp.results];
+  while (resp.has_more) {
+    resp = await notion.blocks.children.list({
       ...params,
-      start_cursor: postContents.next_cursor,
+      start_cursor: resp.next_cursor,
     });
-    results = [...results, ...postContents.results];
+    results = [...results, ...resp.results];
   }
   return results;
 }
 
-export function buildPost(block: BaseBlock) {
+export function buildPost(block: any) {
   const prop = block.properties;
 
   const post: Post = {

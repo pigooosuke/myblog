@@ -1,37 +1,56 @@
 import React from "react";
-import { BaseBlock } from "@/types/blog";
-import Paragraph from "@/components/blocks/paragraph";
-import Heading from "@/components/blocks/heading";
-import ImageBlock from "@/components/blocks/image";
-import Code from "@/components/blocks/code";
-import Quote from "@/components/blocks/quote";
-import Equation from "@/components/blocks/equation";
-import BulletedList from "@/components/blocks/bulletedList";
-import NumberedList from "@/components/blocks/numberedList";
+import {
+  BaseBlock,
+  HeadingBlock,
+  ParagraphBlock,
+  ImageBlock,
+  QuoteBlock,
+  EquationBlock,
+  CodeBlock,
+  BulletedListItem,
+  NumberedListItem,
+} from "@/types/blog";
+import Paragraph from "@/components/blocks/paragraphBlock";
+import Heading from "@/components/blocks/headingBlock";
+import ImageBlk from "@/components/blocks/imageBlock";
+import Code from "@/components/blocks/codeBlock";
+import Quote from "@/components/blocks/quoteBlock";
+import Equation from "@/components/blocks/equationBlock";
+import BulletedList from "@/components/blocks/bulletedListBlock";
+import NumberedList from "@/components/blocks/numberedListBlock";
 
 export const NotionBlock = ({ block }: { block: BaseBlock }) => {
   if (block.type === "paragraph") {
-    return <Paragraph block={block} key={`p-${block.id}`} />;
+    let paragraph = block as ParagraphBlock;
+    return <Paragraph paragraph={paragraph} key={`p-${block.id}`} />;
   } else if (block.type === "heading_1") {
-    return <Heading block={block} level={1} />;
+    let heading = block as HeadingBlock;
+    return <Heading heading={heading} level={1} />;
   } else if (block.type === "heading_2") {
-    return <Heading block={block} level={2} />;
+    let heading = block as HeadingBlock;
+    return <Heading heading={heading} level={2} />;
   } else if (block.type === "heading_3") {
-    return <Heading block={block} level={3} />;
+    let heading = block as HeadingBlock;
+    return <Heading heading={heading} level={3} />;
   } else if (block.type === "image") {
-    return <ImageBlock block={block} />;
+    let image = block as ImageBlock;
+    return <ImageBlk image={image} />;
   } else if (block.type === "code") {
-    return <Code block={block} />;
+    let code = block as CodeBlock;
+    return <Code code={code} />;
   } else if (block.type === "equation") {
-    return <Equation block={block} />;
+    let equation = block as EquationBlock;
+    return <Equation equation={equation} />;
   } else if (block.type === "quote") {
-    return <Quote block={block} />;
+    let quote = block as QuoteBlock;
+    return <Quote quote={quote} />;
   } else if (block.type === "divider") {
     return <hr />;
   } else if (block.type === "bulleted_list_item") {
+    let bulletedlistitem = block as BulletedListItem;
     return (
       <ul>
-        {block.list_items.map((subblock: BaseBlock, i: number) => (
+        {bulletedlistitem.list_items?.map((subblock: BaseBlock, i: number) => (
           <BulletedList
             block={subblock}
             level={0}
@@ -41,9 +60,10 @@ export const NotionBlock = ({ block }: { block: BaseBlock }) => {
       </ul>
     );
   } else if (block.type === "numbered_list_item") {
+    let numberedlistitem = block as NumberedListItem;
     return (
       <ol>
-        {block.list_items.map((subblock: BaseBlock, i: number) => (
+        {numberedlistitem.list_items?.map((subblock: BaseBlock, i: number) => (
           <NumberedList
             block={subblock}
             level={0}
@@ -53,13 +73,6 @@ export const NotionBlock = ({ block }: { block: BaseBlock }) => {
       </ol>
     );
   }
-  // TODO block
-  //
-  // callout
-  // embed
-  // bookmark
-  // link_preview
-  // table
 
   return null;
 };
