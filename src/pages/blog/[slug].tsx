@@ -34,7 +34,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     getPostContent(matchedPost.id),
   ]);
   // upload asset
-  // uploadAssetsFromBlocks(postContent);
+  uploadAssetsFromBlocks(postContent);
   // Next.js passes the data to my React template for rendering
 
   let post = buildPost(postData);
