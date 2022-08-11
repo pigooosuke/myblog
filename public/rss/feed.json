@@ -11,6 +11,13 @@
     },
     "items": [
         {
+            "id": "https://pigooosuke.com/blog/global-or-local-constructing-personalized-click-models-for-web-search",
+            "url": "https://pigooosuke.com/blog/global-or-local-constructing-personalized-click-models-for-web-search",
+            "title": "Global or Local: Constructing Personalized Click Models for Web Search",
+            "summary": "検索において提案されている様々なクリックモデルはユーザーの関連性判断や行動パターンが同質的であるという仮定を置いている。今回、Click Model Personalization framework (CMP)を提案し、特定のユーザーやクエリにおいてパーソナライズすることで性能向上を達成した。",
+            "date_modified": "2022-06-02T15:00:00.000Z"
+        },
+        {
             "id": "https://pigooosuke.com/blog/cross-entropy",
             "url": "https://pigooosuke.com/blog/cross-entropy",
             "title": "ロジスティック回帰における交差エントロピー誤差が凸関数であることの証明",

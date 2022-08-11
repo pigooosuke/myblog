@@ -4,7 +4,7 @@
         <title>pigoosuke site</title>
         <link>https://pigooosuke.com</link>
         <description>pigooosuke site</description>
-        <lastBuildDate>Sat, 16 Apr 2022 14:59:47 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 11 Aug 2022 00:47:31 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ja</language>
@@ -14,6 +14,13 @@
             <link>https://pigooosuke.com</link>
         </image>
         <copyright>All rights reserved 2022, pigooosuke</copyright>
+        <item>
+            <title><![CDATA[Global or Local: Constructing Personalized Click Models for Web Search]]></title>
+            <link>https://pigooosuke.com/blog/global-or-local-constructing-personalized-click-models-for-web-search</link>
+            <guid>https://pigooosuke.com/blog/global-or-local-constructing-personalized-click-models-for-web-search</guid>
+            <pubDate>Thu, 02 Jun 2022 15:00:00 GMT</pubDate>
+            <description><![CDATA[検索において提案されている様々なクリックモデルはユーザーの関連性判断や行動パターンが同質的であるという仮定を置いている。今回、Click Model Personalization framework (CMP)を提案し、特定のユーザーやクエリにおいてパーソナライズすることで性能向上を達成した。]]></description>
+        </item>
         <item>
             <title><![CDATA[ロジスティック回帰における交差エントロピー誤差が凸関数であることの証明]]></title>
             <link>https://pigooosuke.com/blog/cross-entropy</link>
